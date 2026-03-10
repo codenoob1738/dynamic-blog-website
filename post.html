@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Blog</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Edit Blog</h2>
+
+        <form id="editForm">
+            <input type="text" id="editTitle" placeholder="Title" required><br><br>
+            <textarea id="editContent" rows="10" placeholder="Content" required></textarea><br><br>
+
+            <label>Update Image:</label>
+            <input type="file" id="editImage"><br><br>
+
+            <button type="submit">Save Changes</button>
+
+            <button type="button" id="backButton">Back to Home</button>
+
+        </form>
+
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get('id');
+
+        const posts = JSON.parse(localStorage.getItem("blogPosts") || "[]");
+
+        const post = posts.find(p => p.id == postId);
+
+        if (!post) {
+            document.body.innerHTML = "<p>Blog not found</p>";
+        } else {
+            const editForm = document.getElementById('editForm');
+            const editTitleElement = document.getElementById('editTitle');
+            const editContentElement = document.getElementById('editContent');
+            const editImageElement = document.getElementById('editImage');
+
+            editTitleElement.value = post.title;
+            editContentElement.value = post.content;
+
+            editForm.addEventListener("submit", e => {
+                e.preventDefault();
+
+                post.title = editTitleElement.value;
+                post.content = editContentElement.value;
+
+                if (editImageElement.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = () => {
+                        post.image = reader.result;
+                        refreshAndSave();
+                    };
+                    reader.readAsDataURL(editImageElement.files[0]);
+                } else {
+                    refreshAndSave();
+                }
+
+                function refreshAndSave() {
+                    localStorage.setItem("blogPosts", JSON.stringify(posts));
+                    window.location.href = "index.html";
+                }
+            });
+        }
+
+            document.getElementById('backButton').addEventListener('click', () => {
+                window.location.href = 'index.html';
+            });
+  
+    </script>
+
+</body>
+
+</html>
