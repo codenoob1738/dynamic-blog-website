@@ -11,6 +11,8 @@
     <div class="container">
         <h1>FIFA WORLD CUP 2026: TORONTO BLOGS</h1>
 
+        <a href="new-post.html" class="newBlogButton">Upload New Blog</a>
+
         <ul id="postList"></ul>
     </div>
 
@@ -33,17 +35,11 @@
                 var blogPost = document.createElement("li");
                 blogPost.className = "post";
 
-                var postSummary = post.content.substring(0, 150);
-
-                if (post.content.length > 150) {
-                    postSummary = postSummary + "...";
-                }
-
                 blogPost.innerHTML = `
             <h2>${post.title}</h2>
             <p class="date">${new Date(post.date).toLocaleDateString()}</p>
             <img src="${post.image}" alt="Blog image" class="blogImage">
-            <p>${postSummary}</p>
+            <p>${post.content}</p>
         `;
 
                 list.appendChild(blogPost);
