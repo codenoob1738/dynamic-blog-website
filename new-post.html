@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>New Post</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h3>New Blog</h3>
+
+        <form id="postForm">
+            <label for="title">Title:</label><br>
+            <input type="text" id="title" required><br><br>
+
+            <label for="blog">Blog:</label><br>
+            <textarea id="blog" rows="10" required></textarea><br><br>
+
+            <label for="image">Select Image (Optional)</label><br>
+            <input type="file" id="blogImage"><br><br>
+
+            <button type="submit">Upload Blog</button>
+
+            <button type="button" id="disregard">Disregard Blog</button><br><br>
+
+            <a href="index.html" class="cancel">Back to home page</a>
+        </form>
+    </div>
+
+    <script>
+
+        const form = document.getElementById("postForm");
+        const disregardBtn = document.getElementById("disregard");
+
+        let imageData = "";
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const title = document.getElementById("title").value;
+            const blog = document.getElementById("blog").value;
+
+            if (title === "" || blog === "") {
+                alert("Title and content are required!");
+                return;
+            }
+
+            const newPost = {
+                id: Date.now(),
+                title: title,
+                content: blog,
+                image: imageData,
+                date: new Date(),
+            };
+
+            const posts = JSON.parse(localStorage.getItem("blogPosts") || "[]");
+            posts.push(newPost);
+            localStorage.setItem("blogPosts", JSON.stringify(posts));
+
+            window.location.href = "index.html";
+        });
+
+        document.querySelector("#blogImage").addEventListener("change", function () {
+            const reader = new FileReader();
+
+            reader.addEventListener("load", () => {
+                imageData = reader.result;
+            });
+
+            reader.readAsDataURL(this.files[0]);
+        });
+
+        disregardBtn.addEventListener("click", function () {
+            form.reset();
+        });
+
+    </script>
+</body>
+
+</html>
