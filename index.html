@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FIFA 26 BLOGS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>FIFA WORLD CUP 2026: TORONTO BLOGS</h1>
+
+        <ul id="postList"></ul>
+    </div>
+
+    <script>
+
+        const posts = JSON.parse(localStorage.getItem("blogPosts") || "[]");
+
+        const list = document.getElementById("postList");
+
+        if (posts.length === 0) {
+
+            list.innerHTML = "<li class='empty'>No new blogs.</li>";
+
+        } else {
+
+            for (var i = 0; i < posts.length; i++) {
+
+                var post = posts[i];
+
+                var blogPost = document.createElement("li");
+                blogPost.className = "post";
+
+                var postSummary = post.content.substring(0, 150);
+
+                if (post.content.length > 150) {
+                    postSummary = postSummary + "...";
+                }
+
+                blogPost.innerHTML = `
+            <h2>${post.title}</h2>
+            <p class="date">${new Date(post.date).toLocaleDateString()}</p>
+            <img src="${post.image}" alt="Blog image" class="blogImage">
+            <p>${postSummary}</p>
+        `;
+
+                list.appendChild(blogPost);
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

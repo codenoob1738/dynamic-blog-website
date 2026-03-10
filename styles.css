@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+    padding: 15px;
+    font-family: sans-serif;
+    background-color: white;
+    
+}
+
+h1 {
+    text-align: center;
+    font-size: 30px;
+    font-family: Marker Felt, fantasy;
+    background-image: linear-gradient(to right, red, lightblue, red);
+    background-clip: text;
+    color: transparent;
+    border-bottom: 2px solid purple;
+    
+}

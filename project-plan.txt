@@ -1,0 +1,11 @@
+My Dynamic Blog website will allow users to create a new post about there exprience at the upcoming FIFA Worlc Cup games in Toronto.
+
+Users can also view/edit their posts and delete their posts.
+
+First, I will start by developing the homepage adding basic CSS Styling for a responsive layout. Then i will implement the "Create Post Functionality". This will allow users to create new posts.
+
+Next step will be to implement the "View and Edit Post Functionality". This allows users to view and edit their posts.
+
+Lastly, I will implement the 'Delete Functionality'.
+
+All of these steps will be commited to git hub after completion. After commiting and pushing those changes, a pull request will be opened to merge the changes to the main branch.
