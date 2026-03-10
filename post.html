@@ -21,6 +21,8 @@
 
             <button type="submit">Save Changes</button>
 
+            <button type="button" class="deleteButton">Delete Blog</button><br><br>
+
             <button type="button" id="backButton">Back to Home</button>
 
         </form>
@@ -29,11 +31,11 @@
 
     <script>
         const urlParams = new URLSearchParams(window.location.search);
-        const postId = urlParams.get('id');
+        const postId = Number(urlParams.get('id'));
 
         const posts = JSON.parse(localStorage.getItem("blogPosts") || "[]");
 
-        const post = posts.find(p => p.id == postId);
+        const post = posts.find(p => p.id === postId);
 
         if (!post) {
             document.body.innerHTML = "<p>Blog not found</p>";
@@ -70,10 +72,26 @@
             });
         }
 
-            document.getElementById('backButton').addEventListener('click', () => {
-                window.location.href = 'index.html';
-            });
-  
+        document.getElementById('backButton').addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+
+        const deleteButton = document.querySelector(".deleteButton");
+
+        deleteButton.addEventListener("click", function () {
+
+            const confirmDelete = confirm("Are you sure you want to delete this blog?");
+
+            if (!confirmDelete) return;
+
+            const updatedPosts = posts.filter(p => p.id != postId);
+
+            localStorage.setItem("blogPosts", JSON.stringify(updatedPosts));
+
+            window.location.href = "index.html";
+
+        });
+
     </script>
 
 </body>
