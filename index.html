@@ -11,7 +11,7 @@
     <div class="container">
         <h1>FIFA WORLD CUP 2026: TORONTO BLOGS</h1>
 
-        <a href="new-post.html" class="newBlogButton">Upload New Blog</a>
+        <button id="newBlogButton">Upload New Blog</button>
 
         <ul id="postList"></ul>
 
@@ -48,6 +48,9 @@
             }
 
         }
+        document.getElementById("newBlogButton").addEventListener("click", () => {
+            window.location.href = "new-post.html";
+        });
 
         document.querySelectorAll('.editButton').forEach(btn => {
             btn.addEventListener('click', () => {
