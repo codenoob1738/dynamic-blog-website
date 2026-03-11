@@ -6,7 +6,7 @@ body {
     
 }
 
-h1 {
+h1, h3, h4 {
     text-align: center;
     font-size: 30px;
     font-family: Marker Felt, fantasy;
@@ -14,5 +14,139 @@ h1 {
     background-clip: text;
     color: transparent;
     border-bottom: 2px solid purple;
-    
+    margin-top: 10px;
 }
+
+#postList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    list-style: none;
+    padding: 5px;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.post {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    background: #F1F8E9;
+}
+
+.post img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+}
+
+.post h2 {
+    text-align: left;
+    font-size: 20px;
+    font-family: Marker Felt, fantasy;
+    font-weight: bold;
+    background-image: linear-gradient(to right, #ff4b33, yellow);
+    background-clip: text;
+    color: transparent;
+}
+
+.date {
+    text-align: right;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.post p {
+    color: #333333;
+}
+
+#newBlogButton {
+    background: #6FC276;
+    color: white;
+    border: 1px solid #333333;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 3px;
+    font-size: 10px;  
+}
+
+.editButton {
+    background: #FDC483;
+    color: #333333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 3px;
+    font-size: 10px;  
+}
+
+#postForm {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    background: #F1F8E9;
+    font-size: 18px;
+    color: #333333;
+}
+
+#postForm button[type="submit"] {
+    background: #157DEC;
+    color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 3px;
+    font-size: 10px; 
+}
+
+#postForm button[type="submit"]:hover {
+    background-color: #64E986;
+    color: #333333;
+}
+
+#disregard, #cancel {
+    background:#FDC483;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 3px;
+    font-size: 10px; 
+}
+
+#disregard:hover, #cancel:hover {
+    background-color: orangered;
+    color: black;
+}
+
+#editForm button[type="submit"] {
+    background: #157DEC;
+    color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 3px;
+    font-size: 10px; 
+}
+
+.deleteButton, #backButton {
+    background:#FDC483;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 3px;
+    font-size: 10px; 
+}
+
+.deleteButton:hover, #backButton:hover {
+    background-color: orangered;
+    color: black;
+}
+
+
+
+
+
+
+
+
